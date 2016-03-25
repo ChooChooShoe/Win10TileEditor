@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA6CE9C2-5A40-4297-8C86-3E4470CC0A0F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Win10TileEditor</RootNamespace>
+    <AssemblyName>Win10TileEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Win10TileEditor.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorSwatchPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FolderBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FolderBrowser.designer.cs">
+      <DependentUpon>FolderBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIconList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIconList.designer.cs">
+      <DependentUpon>frmIconList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinkBrowserModel.cs" />
+    <Compile Include="FolderItems.cs" />
+    <Compile Include="FolderItemSorter.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="ShellHelp.cs" />
+    <Compile Include="TreeViewItems.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ColorSwatchPicker.resx">
+      <DependentUpon>ColorSwatchPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderBrowser.resx">
+      <DependentUpon>FolderBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIconList.resx">
+      <DependentUpon>frmIconList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\VisualElementsManifest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoIcon150x150.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoIcon70x70.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoIcon150x1501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icons\add.png" />
+    <Content Include="Resources\Icons\add_outline.png" />
+    <Content Include="Resources\Icons\add_small.png" />
+    <Content Include="Resources\Icons\applications_osx_shrink.png" />
+    <Content Include="Resources\Icons\applications_windows.png" />
+    <Content Include="Resources\Icons\application_osx.png" />
+    <Content Include="Resources\Icons\application_osx_add.png" />
+    <Content Include="Resources\Icons\application_osx_down.png" />
+    <Content Include="Resources\Icons\application_osx_edit.png" />
+    <Content Include="Resources\Icons\application_osx_grow.png" />
+    <Content Include="Resources\Icons\application_osx_left.png" />
+    <Content Include="Resources\Icons\application_osx_locked.png" />
+    <Content Include="Resources\Icons\application_osx_new.png" />
+    <Content Include="Resources\Icons\application_osx_okay.png" />
+    <Content Include="Resources\Icons\application_osx_remove.png" />
+    <Content Include="Resources\Icons\application_osx_right.png" />
+    <Content Include="Resources\Icons\application_osx_share.png" />
+    <Content Include="Resources\Icons\application_osx_up.png" />
+    <Content Include="Resources\Icons\application_osx_warning.png" />
+    <Content Include="Resources\Icons\application_windows.png" />
+    <Content Include="Resources\Icons\application_windows_add.png" />
+    <Content Include="Resources\Icons\application_windows_down.png" />
+    <Content Include="Resources\Icons\application_windows_edit.png" />
+    <Content Include="Resources\Icons\application_windows_grow.png" />
+    <Content Include="Resources\Icons\application_windows_left.png" />
+    <Content Include="Resources\Icons\application_windows_locked.png" />
+    <Content Include="Resources\Icons\application_windows_new.png" />
+    <Content Include="Resources\Icons\application_windows_okay.png" />
+    <Content Include="Resources\Icons\application_windows_remove.png" />
+    <Content Include="Resources\Icons\application_windows_right.png" />
+    <Content Include="Resources\Icons\application_windows_share.png" />
+    <Content Include="Resources\Icons\application_windows_shrink.png" />
+    <Content Include="Resources\Icons\application_windows_up.png" />
+    <Content Include="Resources\Icons\application_windows_warning.png" />
+    <Content Include="Resources\Icons\arrow_large_down.png" />
+    <Content Include="Resources\Icons\arrow_large_down_outline.png" />
+    <Content Include="Resources\Icons\arrow_large_left.png" />
+    <Content Include="Resources\Icons\arrow_large_left_outline.png" />
+    <Content Include="Resources\Icons\arrow_large_right.png" />
+    <Content Include="Resources\Icons\arrow_large_right_outline.png" />
+    <Content Include="Resources\Icons\arrow_large_up.png" />
+    <Content Include="Resources\Icons\arrow_large_up_outline.png" />
+    <Content Include="Resources\Icons\arrow_medium_down.png" />
+    <Content Include="Resources\Icons\arrow_medium_left.png" />
+    <Content Include="Resources\Icons\arrow_medium_lower_left.png" />
+    <Content Include="Resources\Icons\arrow_medium_lower_right.png" />
+    <Content Include="Resources\Icons\arrow_medium_right.png" />
+    <Content Include="Resources\Icons\arrow_medium_up.png" />
+    <Content Include="Resources\Icons\arrow_medium_upper_left.png" />
+    <Content Include="Resources\Icons\arrow_medium_upper_right.png" />
+    <Content Include="Resources\Icons\arrow_small_down.png" />
+    <Content Include="Resources\Icons\arrow_small_left.png" />
+    <Content Include="Resources\Icons\arrow_small_right.png" />
+    <Content Include="Resources\Icons\arrow_small_up.png" />
+    <Content Include="Resources\Icons\arrow_state_blue_collapsed.png" />
+    <Content Include="Resources\Icons\arrow_state_blue_expanded.png" />
+    <Content Include="Resources\Icons\arrow_state_blue_left.png" />
+    <Content Include="Resources\Icons\arrow_state_blue_right.png" />
+    <Content Include="Resources\Icons\arrow_state_grey_collapsed.png" />
+    <Content Include="Resources\Icons\arrow_state_grey_expanded.png" />
+    <Content Include="Resources\Icons\arrow_state_grey_left.png" />
+    <Content Include="Resources\Icons\arrow_state_grey_right.png" />
+    <Content Include="Resources\Icons\badge_cancel.png" />
+    <Content Include="Resources\Icons\badge_cancel_online.png" />
+    <Content Include="Resources\Icons\badge_save.png" />
+    <Content Include="Resources\Icons\badge_save_outline.png" />
+    <Content Include="Resources\Icons\badge_send.png" />
+    <Content Include="Resources\Icons\badge_share_1.png" />
+    <Content Include="Resources\Icons\badge_share_2.png" />
+    <Content Include="Resources\Icons\badge_updated_1.png" />
+    <Content Include="Resources\Icons\badge_updated_2.png" />
+    <Content Include="Resources\Icons\box.png" />
+    <Content Include="Resources\Icons\box_add.png" />
+    <Content Include="Resources\Icons\box_edit.png" />
+    <Content Include="Resources\Icons\box_locked.png" />
+    <Content Include="Resources\Icons\box_new.png" />
+    <Content Include="Resources\Icons\box_okay.png" />
+    <Content Include="Resources\Icons\box_remove.png" />
+    <Content Include="Resources\Icons\box_share.png" />
+    <Content Include="Resources\Icons\box_warning.png" />
+    <Content Include="Resources\Icons\breadcrumb_separator_arrow_1_dot.png" />
+    <Content Include="Resources\Icons\breadcrumb_separator_arrow_2_dots.png" />
+    <Content Include="Resources\Icons\breadcrumb_separator_arrow_full.png" />
+    <Content Include="Resources\Icons\breadcrumb_separator_dark.png" />
+    <Content Include="Resources\Icons\breadcrumb_separator_light.png" />
+    <Content Include="Resources\Icons\bullet_blue.png" />
+    <Content Include="Resources\Icons\bullet_blue_arrow.png" />
+    <Content Include="Resources\Icons\bullet_blue_collapse.png" />
+    <Content Include="Resources\Icons\bullet_blue_collapse_small.png" />
+    <Content Include="Resources\Icons\bullet_blue_expand.png" />
+    <Content Include="Resources\Icons\bullet_blue_expand_small.png" />
+    <Content Include="Resources\Icons\bullet_blue_small.png" />
+    <Content Include="Resources\Icons\button_cancel.png" />
+    <Content Include="Resources\Icons\button_edit.png" />
+    <Content Include="Resources\Icons\button_save.png" />
+    <Content Include="Resources\Icons\calendar_day.png" />
+    <Content Include="Resources\Icons\calendar_day_add.png" />
+    <Content Include="Resources\Icons\calendar_day_down.png" />
+    <Content Include="Resources\Icons\calendar_day_edit.png" />
+    <Content Include="Resources\Icons\calendar_day_event.png" />
+    <Content Include="Resources\Icons\calendar_day_left.png" />
+    <Content Include="Resources\Icons\calendar_day_new.png" />
+    <Content Include="Resources\Icons\calendar_day_remove.png" />
+    <Content Include="Resources\Icons\calendar_day_right.png" />
+    <Content Include="Resources\Icons\calendar_day_up.png" />
+    <Content Include="Resources\Icons\calendar_month.png" />
+    <Content Include="Resources\Icons\calendar_month_add.png" />
+    <Content Include="Resources\Icons\calendar_month_down.png" />
+    <Content Include="Resources\Icons\calendar_month_edit.png" />
+    <Content Include="Resources\Icons\calendar_month_left.png" />
+    <Content Include="Resources\Icons\calendar_month_new.png" />
+    <Content Include="Resources\Icons\calendar_month_remove.png" />
+    <Content Include="Resources\Icons\calendar_month_right.png" />
+    <Content Include="Resources\Icons\calendar_month_up.png" />
+    <Content Include="Resources\Icons\calendar_week.png" />
+    <Content Include="Resources\Icons\calendar_week_add.png" />
+    <Content Include="Resources\Icons\calendar_week_edit.png" />
+    <Content Include="Resources\Icons\calendar_week_remove.png" />
+    <Content Include="Resources\Icons\cellphone.png" />
+    <Content Include="Resources\Icons\check.png" />
+    <Content Include="Resources\Icons\close.png" />
+    <Content Include="Resources\Icons\comment.png" />
+    <Content Include="Resources\Icons\comments.png" />
+    <Content Include="Resources\Icons\comments_reply.png" />
+    <Content Include="Resources\Icons\comments_small.png" />
+    <Content Include="Resources\Icons\comment_alert.png" />
+    <Content Include="Resources\Icons\comment_new_1.png" />
+    <Content Include="Resources\Icons\comment_new_2.png" />
+    <Content Include="Resources\Icons\comment_question.png" />
+    <Content Include="Resources\Icons\comment_reply.png" />
+    <Content Include="Resources\Icons\contact_blue.png" />
+    <Content Include="Resources\Icons\contact_blue_add.png" />
+    <Content Include="Resources\Icons\contact_blue_edit.png" />
+    <Content Include="Resources\Icons\contact_blue_new.png" />
+    <Content Include="Resources\Icons\contact_blue_remove.png" />
+    <Content Include="Resources\Icons\contact_grey.png" />
+    <Content Include="Resources\Icons\contact_grey_add.png" />
+    <Content Include="Resources\Icons\contact_grey_edit.png" />
+    <Content Include="Resources\Icons\contact_grey_new.png" />
+    <Content Include="Resources\Icons\contact_grey_remove.png" />
+    <Content Include="Resources\Icons\diamonds_1.png" />
+    <Content Include="Resources\Icons\diamonds_2.png" />
+    <Content Include="Resources\Icons\diamonds_3.png" />
+    <Content Include="Resources\Icons\diamonds_4.png" />
+    <Content Include="Resources\Icons\documents.png" />
+    <Content Include="Resources\Icons\documents_add.png" />
+    <Content Include="Resources\Icons\documents_edit.png" />
+    <Content Include="Resources\Icons\documents_locked.png" />
+    <Content Include="Resources\Icons\documents_new.png" />
+    <Content Include="Resources\Icons\documents_okay.png" />
+    <Content Include="Resources\Icons\documents_remove.png" />
+    <Content Include="Resources\Icons\documents_share.png" />
+    <Content Include="Resources\Icons\documents_warning.png" />
+    <Content Include="Resources\Icons\document_a4.png" />
+    <Content Include="Resources\Icons\document_a4_add.png" />
+    <Content Include="Resources\Icons\document_a4_back.png" />
+    <Content Include="Resources\Icons\document_a4_blank.png" />
+    <Content Include="Resources\Icons\document_a4_download.png" />
+    <Content Include="Resources\Icons\document_a4_edit.png" />
+    <Content Include="Resources\Icons\document_a4_forward.png" />
+    <Content Include="Resources\Icons\document_a4_locked.png" />
+    <Content Include="Resources\Icons\document_a4_marked.png" />
+    <Content Include="Resources\Icons\document_a4_new.png" />
+    <Content Include="Resources\Icons\document_a4_okay.png" />
+    <Content Include="Resources\Icons\document_a4_remove.png" />
+    <Content Include="Resources\Icons\document_a4_share.png" />
+    <Content Include="Resources\Icons\document_a4_upload.png" />
+    <Content Include="Resources\Icons\document_a4_warning.png" />
+    <Content Include="Resources\Icons\document_copy.png" />
+    <Content Include="Resources\Icons\document_letter.png" />
+    <Content Include="Resources\Icons\document_letter_add.png" />
+    <Content Include="Resources\Icons\document_letter_back.png" />
+    <Content Include="Resources\Icons\document_letter_blank.png" />
+    <Content Include="Resources\Icons\document_letter_download.png" />
+    <Content Include="Resources\Icons\document_letter_edit.png" />
+    <Content Include="Resources\Icons\document_letter_forward.png" />
+    <Content Include="Resources\Icons\document_letter_locked.png" />
+    <Content Include="Resources\Icons\document_letter_marked.png" />
+    <Content Include="Resources\Icons\document_letter_new.png" />
+    <Content Include="Resources\Icons\document_letter_okay.png" />
+    <Content Include="Resources\Icons\document_letter_remove.png" />
+    <Content Include="Resources\Icons\document_letter_share.png" />
+    <Content Include="Resources\Icons\document_letter_upload.png" />
+    <Content Include="Resources\Icons\document_letter_warning.png" />
+    <Content Include="Resources\Icons\document_small.png" />
+    <Content Include="Resources\Icons\document_small_download.png" />
+    <Content Include="Resources\Icons\document_small_upload.png" />
+    <Content Include="Resources\Icons\download.png" />
+    <Content Include="Resources\Icons\error.png" />
+    <Content Include="Resources\Icons\error_do_not.png" />
+    <Content Include="Resources\Icons\error_do_not_small.png" />
+    <Content Include="Resources\Icons\error_fuck.png" />
+    <Content Include="Resources\Icons\error_small.png" />
+    <Content Include="Resources\Icons\fish.png" />
+    <Content Include="Resources\Icons\folder_classic.png" />
+    <Content Include="Resources\Icons\folder_classic_add.png" />
+    <Content Include="Resources\Icons\folder_classic_add_simple.png" />
+    <Content Include="Resources\Icons\folder_classic_down.png" />
+    <Content Include="Resources\Icons\folder_classic_edit.png" />
+    <Content Include="Resources\Icons\folder_classic_locked.png" />
+    <Content Include="Resources\Icons\folder_classic_opened.png" />
+    <Content Include="Resources\Icons\folder_classic_opened_stuffed.png" />
+    <Content Include="Resources\Icons\folder_classic_remove.png" />
+    <Content Include="Resources\Icons\folder_classic_remove_simple.png" />
+    <Content Include="Resources\Icons\folder_classic_stuffed.png" />
+    <Content Include="Resources\Icons\folder_classic_stuffed_add.png" />
+    <Content Include="Resources\Icons\folder_classic_stuffed_add_simple.png" />
+    <Content Include="Resources\Icons\folder_classic_stuffed_edit.png" />
+    <Content Include="Resources\Icons\folder_classic_stuffed_locked.png" />
+    <Content Include="Resources\Icons\folder_classic_stuffed_remove.png" />
+    <Content Include="Resources\Icons\folder_classic_stuffed_remove_simple.png" />
+    <Content Include="Resources\Icons\folder_classic_type_document.png" />
+    <Content Include="Resources\Icons\folder_classic_type_image.png" />
+    <Content Include="Resources\Icons\folder_classic_type_movie.png" />
+    <Content Include="Resources\Icons\folder_classic_type_music.png" />
+    <Content Include="Resources\Icons\folder_classic_up.png" />
+    <Content Include="Resources\Icons\folder_locked.png" />
+    <Content Include="Resources\Icons\folder_modernist.png" />
+    <Content Include="Resources\Icons\folder_modernist_add.png" />
+    <Content Include="Resources\Icons\folder_modernist_add_simple.png" />
+    <Content Include="Resources\Icons\folder_modernist_down.png" />
+    <Content Include="Resources\Icons\folder_modernist_edit.png" />
+    <Content Include="Resources\Icons\folder_modernist_locked.png" />
+    <Content Include="Resources\Icons\folder_modernist_opened.png" />
+    <Content Include="Resources\Icons\folder_modernist_opened_stuffed.png" />
+    <Content Include="Resources\Icons\folder_modernist_remove.png" />
+    <Content Include="Resources\Icons\folder_modernist_remove_simple.png" />
+    <Content Include="Resources\Icons\folder_modernist_stuffed.png" />
+    <Content Include="Resources\Icons\folder_modernist_stuffed_add.png" />
+    <Content Include="Resources\Icons\folder_modernist_stuffed_add_simple.png" />
+    <Content Include="Resources\Icons\folder_modernist_stuffed_edit.png" />
+    <Content Include="Resources\Icons\folder_modernist_stuffed_locked.png" />
+    <Content Include="Resources\Icons\folder_modernist_stuffed_remove.png" />
+    <Content Include="Resources\Icons\folder_modernist_stuffed_remove_simple.png" />
+    <Content Include="Resources\Icons\folder_modernist_type_document.png" />
+    <Content Include="Resources\Icons\folder_modernist_type_image.png" />
+    <Content Include="Resources\Icons\folder_modernist_type_movie.png" />
+    <Content Include="Resources\Icons\folder_modernist_type_music.png" />
+    <Content Include="Resources\Icons\folder_modernist_up.png" />
+    <Content Include="Resources\Icons\folder_remove.png" />
+    <Content Include="Resources\Icons\folder_stuffed.png" />
+    <Content Include="Resources\Icons\folder_stuffed_add.png" />
+    <Content Include="Resources\Icons\folder_stuffed_locked.png" />
+    <Content Include="Resources\Icons\folder_stuffed_remove.png" />
+    <Content Include="Resources\Icons\gem_cancel_1.png" />
+    <Content Include="Resources\Icons\gem_cancel_2.png" />
+    <Content Include="Resources\Icons\gem_cancel_3.png" />
+    <Content Include="Resources\Icons\gem_cancel_4.png" />
+    <Content Include="Resources\Icons\gem_cancel_5.png" />
+    <Content Include="Resources\Icons\gem_okay.png" />
+    <Content Include="Resources\Icons\gem_options.png" />
+    <Content Include="Resources\Icons\gem_remove.png" />
+    <Content Include="Resources\Icons\gem_save.png" />
+    <Content Include="Resources\Icons\group_blue.png" />
+    <Content Include="Resources\Icons\group_blue_add.png" />
+    <Content Include="Resources\Icons\group_blue_edit.png" />
+    <Content Include="Resources\Icons\group_blue_new.png" />
+    <Content Include="Resources\Icons\group_blue_remove.png" />
+    <Content Include="Resources\Icons\group_green.png" />
+    <Content Include="Resources\Icons\group_green_add.png" />
+    <Content Include="Resources\Icons\group_green_edit.png" />
+    <Content Include="Resources\Icons\group_green_new.png" />
+    <Content Include="Resources\Icons\group_green_remove.png" />
+    <Content Include="Resources\Icons\group_grey.png" />
+    <Content Include="Resources\Icons\group_grey_add.png" />
+    <Content Include="Resources\Icons\group_grey_edit.png" />
+    <Content Include="Resources\Icons\group_grey_new.png" />
+    <Content Include="Resources\Icons\group_grey_remove.png" />
+    <Content Include="Resources\Icons\hcard.png" />
+    <Content Include="Resources\Icons\hcards.png" />
+    <Content Include="Resources\Icons\hcards_add.png" />
+    <Content Include="Resources\Icons\hcards_down.png" />
+    <Content Include="Resources\Icons\hcards_edit.png" />
+    <Content Include="Resources\Icons\hcards_left.png" />
+    <Content Include="Resources\Icons\hcards_remove.png" />
+    <Content Include="Resources\Icons\hcards_right.png" />
+    <Content Include="Resources\Icons\hcards_up.png" />
+    <Content Include="Resources\Icons\hcard_add.png" />
+    <Content Include="Resources\Icons\hcard_download.png" />
+    <Content Include="Resources\Icons\hcard_edit.png" />
+    <Content Include="Resources\Icons\hcard_left.png" />
+    <Content Include="Resources\Icons\hcard_new.png" />
+    <Content Include="Resources\Icons\hcard_remove.png" />
+    <Content Include="Resources\Icons\hcard_right.png" />
+    <Content Include="Resources\Icons\hcard_up.png" />
+    <Content Include="Resources\Icons\heart.png" />
+    <Content Include="Resources\Icons\heart_add.png" />
+    <Content Include="Resources\Icons\heart_down.png" />
+    <Content Include="Resources\Icons\heart_edit.png" />
+    <Content Include="Resources\Icons\heart_left.png" />
+    <Content Include="Resources\Icons\heart_outline.png" />
+    <Content Include="Resources\Icons\heart_remove.png" />
+    <Content Include="Resources\Icons\heart_right.png" />
+    <Content Include="Resources\Icons\heart_up.png" />
+    <Content Include="Resources\Icons\help.png" />
+    <Content Include="Resources\Icons\home_green.png" />
+    <Content Include="Resources\Icons\home_grey.png" />
+    <Content Include="Resources\Icons\iconDump.png" />
+    <Content Include="Resources\Icons\image_cultured.png" />
+    <Content Include="Resources\Icons\image_modernist.png" />
+    <Content Include="Resources\Icons\information.png" />
+    <Content Include="Resources\Icons\lock_large_locked.png" />
+    <Content Include="Resources\Icons\lock_large_unlocked.png" />
+    <Content Include="Resources\Icons\lock_small_locked.png" />
+    <Content Include="Resources\Icons\lock_small_unlocked.png" />
+    <Content Include="Resources\Icons\mail_dark.png" />
+    <Content Include="Resources\Icons\mail_dark_down.png" />
+    <Content Include="Resources\Icons\mail_dark_left.png" />
+    <Content Include="Resources\Icons\mail_dark_new_1.png" />
+    <Content Include="Resources\Icons\mail_dark_new_2.png" />
+    <Content Include="Resources\Icons\mail_dark_right.png" />
+    <Content Include="Resources\Icons\mail_dark_stuffed.png" />
+    <Content Include="Resources\Icons\mail_dark_up.png" />
+    <Content Include="Resources\Icons\mail_light.png" />
+    <Content Include="Resources\Icons\mail_light_down.png" />
+    <Content Include="Resources\Icons\mail_light_left.png" />
+    <Content Include="Resources\Icons\mail_light_new_1.png" />
+    <Content Include="Resources\Icons\mail_light_new_2.png" />
+    <Content Include="Resources\Icons\mail_light_right.png" />
+    <Content Include="Resources\Icons\mail_light_stuffed.png" />
+    <Content Include="Resources\Icons\mail_light_up.png" />
+    <Content Include="Resources\Icons\map.png" />
+    <Content Include="Resources\Icons\marker_rounded_add.png" />
+    <Content Include="Resources\Icons\marker_rounded_blue.png" />
+    <Content Include="Resources\Icons\marker_rounded_edit.png" />
+    <Content Include="Resources\Icons\marker_rounded_green.png" />
+    <Content Include="Resources\Icons\marker_rounded_grey_1.png" />
+    <Content Include="Resources\Icons\marker_rounded_grey_2.png" />
+    <Content Include="Resources\Icons\marker_rounded_grey_3.png" />
+    <Content Include="Resources\Icons\marker_rounded_grey_4.png" />
+    <Content Include="Resources\Icons\marker_rounded_grey_5.png" />
+    <Content Include="Resources\Icons\marker_rounded_light_blue.png" />
+    <Content Include="Resources\Icons\marker_rounded_new.png" />
+    <Content Include="Resources\Icons\marker_rounded_orange.png" />
+    <Content Include="Resources\Icons\marker_rounded_pink.png" />
+    <Content Include="Resources\Icons\marker_rounded_red.png" />
+    <Content Include="Resources\Icons\marker_rounded_remove.png" />
+    <Content Include="Resources\Icons\marker_rounded_violet.png" />
+    <Content Include="Resources\Icons\marker_rounded_yellow.png" />
+    <Content Include="Resources\Icons\marker_rounded_yellow_green.png" />
+    <Content Include="Resources\Icons\marker_rounded_yellow_orange.png" />
+    <Content Include="Resources\Icons\marker_squared_add.png" />
+    <Content Include="Resources\Icons\marker_squared_blue.png" />
+    <Content Include="Resources\Icons\marker_squared_edit.png" />
+    <Content Include="Resources\Icons\marker_squared_green.png" />
+    <Content Include="Resources\Icons\marker_squared_grey_1.png" />
+    <Content Include="Resources\Icons\marker_squared_grey_2.png" />
+    <Content Include="Resources\Icons\marker_squared_grey_3.png" />
+    <Content Include="Resources\Icons\marker_squared_grey_4.png" />
+    <Content Include="Resources\Icons\marker_squared_grey_5.png" />
+    <Content Include="Resources\Icons\marker_squared_light_blue.png" />
+    <Content Include="Resources\Icons\marker_squared_new.png" />
+    <Content Include="Resources\Icons\marker_squared_orange.png" />
+    <Content Include="Resources\Icons\marker_squared_pink.png" />
+    <Content Include="Resources\Icons\marker_squared_red.png" />
+    <Content Include="Resources\Icons\marker_squared_removed.png" />
+    <Content Include="Resources\Icons\marker_squared_violet.png" />
+    <Content Include="Resources\Icons\marker_squared_yellow.png" />
+    <Content Include="Resources\Icons\marker_squared_yellow_green.png" />
+    <Content Include="Resources\Icons\marker_squared_yellow_orange.png" />
+    <Content Include="Resources\Icons\media_controls_dark_first.png" />
+    <Content Include="Resources\Icons\media_controls_dark_forward.png" />
+    <Content Include="Resources\Icons\media_controls_dark_last.png" />
+    <Content Include="Resources\Icons\media_controls_dark_pause.png" />
+    <Content Include="Resources\Icons\media_controls_dark_play.png" />
+    <Content Include="Resources\Icons\media_controls_dark_rewind.png" />
+    <Content Include="Resources\Icons\media_controls_dark_stop.png" />
+    <Content Include="Resources\Icons\media_controls_first_small.png" />
+    <Content Include="Resources\Icons\media_controls_forward_small.png" />
+    <Content Include="Resources\Icons\media_controls_last_small.png" />
+    <Content Include="Resources\Icons\media_controls_light_first.png" />
+    <Content Include="Resources\Icons\media_controls_light_forward.png" />
+    <Content Include="Resources\Icons\media_controls_light_last.png" />
+    <Content Include="Resources\Icons\media_controls_light_pause.png" />
+    <Content Include="Resources\Icons\media_controls_light_play.png" />
+    <Content Include="Resources\Icons\media_controls_light_rewind.png" />
+    <Content Include="Resources\Icons\media_controls_light_stop.png" />
+    <Content Include="Resources\Icons\media_controls_pause_small.png" />
+    <Content Include="Resources\Icons\media_controls_play_small.png" />
+    <Content Include="Resources\Icons\media_controls_rewind_small.png" />
+    <Content Include="Resources\Icons\media_controls_stop_small.png" />
+    <Content Include="Resources\Icons\menu.png" />
+    <Content Include="Resources\Icons\menu_dropdown.png" />
+    <Content Include="Resources\Icons\movie_blue.png" />
+    <Content Include="Resources\Icons\movie_blue_film_strip.png" />
+    <Content Include="Resources\Icons\movie_grey.png" />
+    <Content Include="Resources\Icons\movie_grey_camera.png" />
+    <Content Include="Resources\Icons\movie_grey_dark.png" />
+    <Content Include="Resources\Icons\movie_grey_light.png" />
+    <Content Include="Resources\Icons\movie_play.png" />
+    <Content Include="Resources\Icons\music_cd_blue_note.png" />
+    <Content Include="Resources\Icons\music_cd_blue_notes.png" />
+    <Content Include="Resources\Icons\music_green.png" />
+    <Content Include="Resources\Icons\music_green_note.png" />
+    <Content Include="Resources\Icons\music_grey.png" />
+    <Content Include="Resources\Icons\new_1.png" />
+    <Content Include="Resources\Icons\new_2.png" />
+    <Content Include="Resources\Icons\new_3.png" />
+    <Content Include="Resources\Icons\new_4.png" />
+    <Content Include="Resources\Icons\new_5.png" />
+    <Content Include="Resources\Icons\new_6.png" />
+    <Content Include="Resources\Icons\new_small.png" />
+    <Content Include="Resources\Icons\okay.png" />
+    <Content Include="Resources\Icons\okay_small.png" />
+    <Content Include="Resources\Icons\pagination_1_first.png" />
+    <Content Include="Resources\Icons\pagination_1_last.png" />
+    <Content Include="Resources\Icons\pagination_1_next.png" />
+    <Content Include="Resources\Icons\pagination_1_previous.png" />
+    <Content Include="Resources\Icons\pencil.png" />
+    <Content Include="Resources\Icons\pencil_small.png" />
+    <Content Include="Resources\Icons\printer.png" />
+    <Content Include="Resources\Icons\quanitity_capsule_1.png" />
+    <Content Include="Resources\Icons\quantity_capsule_2.png" />
+    <Content Include="Resources\Icons\quantity_capsule_3.png" />
+    <Content Include="Resources\Icons\quantity_capsule_4.png" />
+    <Content Include="Resources\Icons\quantity_capsule_5.png" />
+    <Content Include="Resources\Icons\refresh.png" />
+    <Content Include="Resources\Icons\refresh_backwards.png" />
+    <Content Include="Resources\Icons\refresh_forward.png" />
+    <Content Include="Resources\Icons\remove.png" />
+    <Content Include="Resources\Icons\remove_minus_sign.png" />
+    <Content Include="Resources\Icons\remove_minus_sign_outline.png" />
+    <Content Include="Resources\Icons\remove_minus_sign_small.png" />
+    <Content Include="Resources\Icons\remove_outline.png" />
+    <Content Include="Resources\Icons\rich_text_align_center.png" />
+    <Content Include="Resources\Icons\rich_text_align_left.png" />
+    <Content Include="Resources\Icons\rich_text_align_right.png" />
+    <Content Include="Resources\Icons\rich_text_bold.png" />
+    <Content Include="Resources\Icons\rich_text_color.png" />
+    <Content Include="Resources\Icons\rich_text_italics.png" />
+    <Content Include="Resources\Icons\rich_text_underline.png" />
+    <Content Include="Resources\Icons\search.png" />
+    <Content Include="Resources\Icons\share_abstract.png" />
+    <Content Include="Resources\Icons\share_small.png" />
+    <Content Include="Resources\Icons\shield.png" />
+    <Content Include="Resources\Icons\shield_chevrons.png" />
+    <Content Include="Resources\Icons\shield_star.png" />
+    <Content Include="Resources\Icons\slider.png" />
+    <Content Include="Resources\Icons\slider_no_pointy_thing.png" />
+    <Content Include="Resources\Icons\smiley_amused.png" />
+    <Content Include="Resources\Icons\smiley_happy.png" />
+    <Content Include="Resources\Icons\smiley_surprised.png" />
+    <Content Include="Resources\Icons\sprocket_dark.png" />
+    <Content Include="Resources\Icons\sprocket_dark_dropdown.png" />
+    <Content Include="Resources\Icons\sprocket_light.png" />
+    <Content Include="Resources\Icons\sprocket_light_dropdown.png" />
+    <Content Include="Resources\Icons\star_boxed_empty.png" />
+    <Content Include="Resources\Icons\star_boxed_full.png" />
+    <Content Include="Resources\Icons\star_boxed_half.png" />
+    <Content Include="Resources\Icons\star_empty.png" />
+    <Content Include="Resources\Icons\star_full.png" />
+    <Content Include="Resources\Icons\star_half.png" />
+    <Content Include="Resources\Icons\tag.png" />
+    <Content Include="Resources\Icons\tag_add.png" />
+    <Content Include="Resources\Icons\tag_edit.png" />
+    <Content Include="Resources\Icons\tag_remove.png" />
+    <Content Include="Resources\Icons\thumb_down.png" />
+    <Content Include="Resources\Icons\thumb_up.png" />
+    <Content Include="Resources\Icons\ticket.png" />
+    <Content Include="Resources\Icons\ticket_add.png" />
+    <Content Include="Resources\Icons\ticket_remove.png" />
+    <Content Include="Resources\Icons\upload.png" />
+    <Content Include="Resources\Icons\view_less_text.png" />
+    <Content Include="Resources\Icons\view_list.png" />
+    <Content Include="Resources\Icons\view_list_with_thumbnail.png" />
+    <Content Include="Resources\Icons\view_more_text.png" />
+    <Content Include="Resources\Icons\view_outline.png" />
+    <Content Include="Resources\Icons\view_outline_detail.png" />
+    <Content Include="Resources\Icons\view_table.png" />
+    <Content Include="Resources\Icons\view_thumbnail.png" />
+    <Content Include="Resources\Icons\view_tree_classic.png" />
+    <Content Include="Resources\Icons\view_tree_modernist.png" />
+    <Content Include="Resources\Icons\volume.png" />
+    <Content Include="Resources\Icons\volume_loud.png" />
+    <Content Include="Resources\Icons\volume_mute.png" />
+    <Content Include="Resources\Icons\volume_off.png" />
+    <Content Include="Resources\Icons\volume_quiet.png" />
+    <Content Include="Resources\Icons\warning.png" />
+    <Content Include="Resources\Icons\warning_triangle.png" />
+    <Content Include="Resources\Icons\warning_triangle_small.png" />
+    <Content Include="Resources\Icons\zoom.png" />
+    <Content Include="Resources\Icons\zoom_in.png" />
+    <Content Include="Resources\Icons\zoom_out.png" />
+    <Content Include="Resources\Sample.VisualElementsManifest.xml" />
+    <None Include="Resources\UknownIcon150.png" />
+    <None Include="Resources\UknownIcon70.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aga.Controls\Aga.Controls.csproj">
+      <Project>{e73bb233-d88b-44a7-a98f-d71ee158381d}</Project>
+      <Name>Aga.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IconPack\IconPack.csproj">
+      <Project>{92e382a2-74b6-4342-b9d9-be6843f2ce22}</Project>
+      <Name>IconPack</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenPainter.ColorPicker\OpenPainter.ColorPicker.csproj">
+      <Project>{3e33bc0f-af32-4bc8-831e-0a94d0e78e0f}</Project>
+      <Name>OpenPainter.ColorPicker</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

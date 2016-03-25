@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="st_nonemptystring">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="32767"/>
+      <xs:pattern value="[^\s]|([^\s].*[^\s])"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="st_filenamecharset">
+    <xs:restriction base="st_nonemptystring">
+      <xs:pattern value="[^&lt;&gt;&quot;:%\|\?\*]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="st_filename">
+    <xs:restriction base="st_filenamecharset">
+      <xs:pattern value="([^/\\]*[^./\\]+)(\\[^/\\]*[^./\\]+)*"/>
+      <xs:pattern value="([^/\\]*[^./\\]+)(/[^/\\]*[^./\\]+)*"/>
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="st_imagefile">
+    <xs:restriction base="st_filename">
+      <xs:pattern value=".+\.((jpg)|(png)|(jpeg)|(gif))"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="st_color">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="#[\da-fA-F]{6}"/>
+      <xs:pattern value="black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="st_foregroundtext">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="light"/>
+      <xs:enumeration value="dark"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="st_showname">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="on"/>
+      <xs:enumeration value="off"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="ct_visualelements">
+    <xs:attribute name="Square150x150Logo" type="st_imagefile" use="optional"/>
+    <xs:attribute name="Square70x70Logo" type="st_imagefile" use="optional"/>
+    <xs:attribute name="ForegroundText" type="st_foregroundtext" use="required"/>
+    <xs:attribute name="BackgroundColor" type="st_color" use="required"/>
+    <xs:attribute name="ShowNameOnSquare150x150Logo" type="st_showname" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ct_application">
+    <xs:all>
+      <xs:element name="VisualElements" type="ct_visualelements" />
+    </xs:all>
+  </xs:complexType>
+
+  <xs:element name="Application" type="ct_application" />
+
+</xs:schema>

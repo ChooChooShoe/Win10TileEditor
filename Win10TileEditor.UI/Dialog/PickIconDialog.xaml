@@ -1,0 +1,117 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Win10TileEditor.Dialog"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Win10TileEditor.Dialog.PickIconDialog"
+        mc:Ignorable="d"
+        Title="Pick Icon" Height="404" Width="590" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <local:PickIconModel x:Key="PickIconModel"/>
+        <Style x:Key="FileItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="Padding" Value="0,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+    </Window.Resources>
+
+    <DockPanel>
+        <Grid Margin="15" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1.1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBox x:Name="TextIconPath" TextWrapping="NoWrap" Margin="5,5,5,0" Text="{Binding Source={StaticResource PickIconModel}, Path=IconPath, Mode=TwoWay}" Height="23" VerticalAlignment="Top" Grid.Row="1" LostFocus="TextIconPath_LostFocus"/>
+            <xctk:IntegerUpDown Height="23" VerticalAlignment="Top" Grid.Column="2" Margin="5,5,5,0" Value="{Binding Source={StaticResource PickIconModel}, Path=IconIndex, Mode=TwoWay}" Grid.Row="1" />
+            <Label Content="Look for icons is this file:" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+            <Button x:Name="BrowseIconButton" Content="_Browse..." Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+
+        </Grid>
+        <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="5">
+            <Button IsDefault="True" x:Name="btnDialogOk" MinWidth="60" Margin="0,0,10,0" Content="_Ok" Click="btnDialogOk_Click"/>
+            <Button IsCancel="True" MinWidth="60" Content="_Cancel"/>
+        </WrapPanel>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Select Icon from file:" Grid.Row="0" VerticalAlignment="Top"/>
+            <Label Content="Select icon size from internal icon:" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top"/>
+
+            <ListBox x:Name="IconInFileView" Margin="5" Grid.Row="1"
+                  ItemsSource="{Binding Source={StaticResource PickIconModel}, Path=IconsInFile, Mode=OneWay}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  SelectedItem="{Binding Source={StaticResource PickIconModel}, Path=SelectedIconInFile}"
+                  ItemContainerStyle="{StaticResource FileItemStyle}" SelectionChanged="IconInFileView_SelectionChanged">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel SnapsToDevicePixels="True"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="16"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ActualHeight}"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Grid.Row="1" Text="{Binding Size}"/>
+                            <Image Height="{Binding Size.Height}" Width="{Binding Size.Width}" Source="{Binding Converter={StaticResource IconToIamge}}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <GridSplitter x:Name="gridSplitter" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Stretch" Width="5"/>
+
+            <ListBox x:Name="IconSizeView" Grid.Column="2" Margin="5" Grid.Row="1"
+                  ItemsSource="{Binding Source={StaticResource PickIconModel}, Path=IconSizes, Mode=OneWay}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  SelectedItem="{Binding Source={StaticResource PickIconModel}, Path=SelectedIconSize}"
+                  ItemContainerStyle="{StaticResource FileItemStyle}" SelectionChanged="IconSizeView_SelectionChanged">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="16"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ActualHeight}"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="1" Text="{Binding Size}"/>
+                            <Image Height="{Binding Size.Height}" MaxHeight="96" Width="{Binding Size.Width}" MaxWidth="96" Source="{Binding Converter={StaticResource IconToIamge}}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </DockPanel>
+</Window>

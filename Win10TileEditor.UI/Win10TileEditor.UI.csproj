@@ -1,0 +1,1244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36E4CE49-E87F-49ED-B787-A049564C9C03}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Win10TileEditor</RootNamespace>
+    <AssemblyName>Win10TileEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Win10TileEditor.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.6\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.6\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.6\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.6\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.6\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.6\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BindableBase.cs" />
+    <Compile Include="ColorManager.cs" />
+    <Compile Include="Dialog\PickIconDialog.xaml.cs">
+      <DependentUpon>PickIconDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\PickIconModel.cs" />
+    <Compile Include="Dialog\IconToIamgeConverter.cs" />
+    <Compile Include="Tree\Interaction\Command.cs" />
+    <Compile Include="Tree\Interaction\EventCommand.cs" />
+    <Compile Include="Tree\LinkTreeControl.xaml.cs">
+      <DependentUpon>LinkTreeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tree\ValueConverters\BooleanToVisiblityConverter.cs" />
+    <Compile Include="Tree\ValueConverters\ColorConverter.cs" />
+    <Compile Include="Tree\ValueConverters\TreeNodeToImageConverter.cs" />
+    <Compile Include="Tree\ViewModels\SearchViewModel.cs" />
+    <Compile Include="Tree\ViewModels\TreeNodeViewModel.cs" />
+    <Compile Include="VisualManifest.cs" />
+    <Page Include="Dialog\PickIconDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Cancel\Cancel_12x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_14x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_16xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_16xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_24x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_256x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_48x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_7x16.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_7x_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_8x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_disable_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\Cancel_grey_16xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\F12_Cancel_24x72.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\F12_Cancel_36x108.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\F12_Cancel_36x96.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\VSO_Cancel_10x_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\VSO_Cancel_12x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\VSO_Cancel_12x_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\VSO_Cancel_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\VSO_Cancel_disabled_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\VSO_Cancel_noHalo_12x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cancel\VSO_Cancel_noHalo_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\Document_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\document_16xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\document_16xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\Document_24x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\Document_256x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\Document_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\document_32xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\document_32xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\Document_48x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\Document_64x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\Document_Ramp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Document\VSO_Document_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FileWarning\FileWarning_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FileWarning\FileWarning_256x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FileWarning\FileWarning_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FileWarning\FileWarning_48x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FileWarning\FileWarning_64x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpenWarning\FolderOpenWarning_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\Folder open_32xMD_exp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpenGold_16xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpenGold_16xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpenGold_32xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpenGold_32xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_16xLG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_16xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_16xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_24x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_256x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_32xLG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_32xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_32xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_48x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_64x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\FolderOpen_exp_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\OpenFolderRamp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderOpen\VSO_FolderOpen_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FolderWarning\FolderWarning_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\F12_Folder_28x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\F12_Folder_54x108.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\FolderClosedGold_32xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\FolderClosedGold_32xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\FolderRamp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_16xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_16xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_21x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_24x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_256x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_25x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_32xLG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_32xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_32xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_48x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_64x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_grey_12x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\Folder_grey_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\VSO_Folder_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\VSO_Folder_hoverblue_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\VSO_Folder_lightGrey_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Folder\VSO_Folder_whiteNoHalo_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphDown\F12_GlyphDown_18x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphDown\F12_GlyphDown_18x24.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphDown\GlyphDown_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphDown\GlyphDown_71GrayNoHaloSmall_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphDown\GlyphDown_71GrayNoHalo_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphDown\GlyphDown_linkBlueNoHalo_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphDown\VSO_GlyphDown_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphDown\VSO_GlyphDown_color_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\F12_GlyphLeft_10x18.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\F12_GlyphLeft_10x18_hover.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\F12_GlyphLeft_10x44.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\F12_GlyphLeft_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\F12_GlyphLeft_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_12x11.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_15x14.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_16xLG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_18x17.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_24x22.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_256x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_48x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\GlyphLeft_64x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\previous1_F12.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\previous2_F12.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphLeft\VSO_GlyphLeft_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\f12_breadcrumb_scroll_right_hover.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\F12_GlyphRight_10x18.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\F12_GlyphRight_10x44.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\F12_GlyphRight_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\F12_GlyphRight_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\F12_GlyphRight_outline_14x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\F12_GlyphRight_outline_22x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_12x11.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_15x14.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_16xLG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_18x17.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_1ENoHalo_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_24x22.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_256x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_48x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_64x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_outlineWhiteNoHalo_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\GlyphRight_outline_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\next1_F12.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\next2_F12.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\VSO_GlyphRight_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphRight\VSO_GlyphRight_outline_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphUp\F12_GlyphUp_18x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphUp\F12_GlyphUp_18x24.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphUp\GlyphUp_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\GlyphUp\VSO_GlyphUp_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\asset_image-control_on_12X12.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\asset_image-control_on_24X24.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_12x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_16xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_16xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_18x16.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_24x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_256x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_26x26.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_32x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_32xMD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_32xSM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_48x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\Image_64x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Image\VSO_Image_16x.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TreeResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tree\LinkTreeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tree\Resources\SearchTreeTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tree\Resources\Styles\SearchBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tree\Resources\Styles\TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tree\Resources\ValueConverters.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Resources\Cancel\Cancel_12x.ai" />
+    <None Include="Resources\Cancel\Cancel_14x.ai" />
+    <None Include="Resources\Cancel\Cancel_16x.ai" />
+    <None Include="Resources\Cancel\Cancel_16xMD.ai" />
+    <None Include="Resources\Cancel\Cancel_16xSM.ai" />
+    <None Include="Resources\Cancel\Cancel_24x.ai" />
+    <None Include="Resources\Cancel\Cancel_256x.ai" />
+    <None Include="Resources\Cancel\Cancel_32x.ai" />
+    <None Include="Resources\Cancel\Cancel_48x.ai" />
+    <None Include="Resources\Cancel\Cancel_7x16.ai" />
+    <None Include="Resources\Cancel\Cancel_7x_16x.ai" />
+    <None Include="Resources\Cancel\Cancel_8x.ai" />
+    <None Include="Resources\Cancel\Cancel_disable_32x.ai" />
+    <None Include="Resources\Cancel\Cancel_grey_16xMD.ai" />
+    <None Include="Resources\Cancel\F12_Cancel_24x72.ai" />
+    <None Include="Resources\Cancel\F12_Cancel_36x108.ai" />
+    <None Include="Resources\Cancel\F12_Cancel_36x96.ai" />
+    <None Include="Resources\Cancel\VSO_Cancel_10x_16x.ai" />
+    <None Include="Resources\Cancel\VSO_Cancel_12x.ai" />
+    <None Include="Resources\Cancel\VSO_Cancel_12x_16x.ai" />
+    <None Include="Resources\Cancel\VSO_Cancel_16x.ai" />
+    <None Include="Resources\Cancel\VSO_Cancel_disabled_16x.ai" />
+    <None Include="Resources\Cancel\VSO_Cancel_grey_12x_16x.ai" />
+    <None Include="Resources\Cancel\VSO_Cancel_noHalo_12x.ai" />
+    <None Include="Resources\Cancel\VSO_Cancel_noHalo_16x.ai" />
+    <None Include="Resources\Document\Document_16x.ai" />
+    <None Include="Resources\Document\document_16xMD.ai" />
+    <None Include="Resources\Document\document_16xSM.ai" />
+    <None Include="Resources\Document\Document_24x.ai" />
+    <None Include="Resources\Document\Document_256x.ai" />
+    <None Include="Resources\Document\Document_32x.ai" />
+    <None Include="Resources\Document\document_32xMD.ai" />
+    <None Include="Resources\Document\document_32xSM.ai" />
+    <None Include="Resources\Document\Document_48x.ai" />
+    <None Include="Resources\Document\Document_64x.ai" />
+    <None Include="Resources\Document\Document_Ramp.ai" />
+    <None Include="Resources\Document\VSO_Document_16x.ai" />
+    <None Include="Resources\FileWarning\FileWarning_16x.ai" />
+    <None Include="Resources\FileWarning\FileWarning_256x.ai" />
+    <None Include="Resources\FileWarning\FileWarning_32x.ai" />
+    <None Include="Resources\FileWarning\FileWarning_48x.ai" />
+    <None Include="Resources\FileWarning\FileWarning_64x.ai" />
+    <None Include="Resources\FolderOpenWarning\FolderOpenWarning_16x.ai" />
+    <None Include="Resources\FolderOpen\Folder open_32xMD_exp.ai" />
+    <None Include="Resources\FolderOpen\FolderOpenGold_16xMD.ai" />
+    <None Include="Resources\FolderOpen\FolderOpenGold_16xSM.ai" />
+    <None Include="Resources\FolderOpen\FolderOpenGold_32xMD.ai" />
+    <None Include="Resources\FolderOpen\FolderOpenGold_32xSM.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_16x.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_16xLG.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_16xMD.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_16xSM.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_24x.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_256x.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_32x.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_32xLG.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_32xMD.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_32xSM.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_48x.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_64x.ai" />
+    <None Include="Resources\FolderOpen\FolderOpen_exp_16x.ai" />
+    <None Include="Resources\FolderOpen\OpenFolderRamp.ai" />
+    <None Include="Resources\FolderOpen\VSO_FolderOpen_16x.ai" />
+    <None Include="Resources\FolderWarning\FolderWarning_16x.ai" />
+    <None Include="Resources\Folder\F12_Folder_28x.ai" />
+    <None Include="Resources\Folder\F12_Folder_54x108.ai" />
+    <None Include="Resources\Folder\FolderClosedGold_32xMD.ai" />
+    <None Include="Resources\Folder\FolderClosedGold_32xSM.ai" />
+    <None Include="Resources\Folder\FolderRamp.ai" />
+    <None Include="Resources\Folder\Folder_16x.ai" />
+    <None Include="Resources\Folder\Folder_16xMD.ai" />
+    <None Include="Resources\Folder\Folder_16xSM.ai" />
+    <None Include="Resources\Folder\Folder_21x.ai" />
+    <None Include="Resources\Folder\Folder_24x.ai" />
+    <None Include="Resources\Folder\Folder_256x.ai" />
+    <None Include="Resources\Folder\Folder_25x.ai" />
+    <None Include="Resources\Folder\Folder_32x.ai" />
+    <None Include="Resources\Folder\Folder_32xLG.ai" />
+    <None Include="Resources\Folder\Folder_32xMD.ai" />
+    <None Include="Resources\Folder\Folder_32xSM.ai" />
+    <None Include="Resources\Folder\Folder_48x.ai" />
+    <None Include="Resources\Folder\Folder_64x.ai" />
+    <None Include="Resources\Folder\Folder_grey_12x.ai" />
+    <None Include="Resources\Folder\Folder_grey_16x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_16x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_Grey_16x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_Grey_20x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_Grey_24x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_grey_32x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_hoverblue_16x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_hoverblue_20x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_hoverblue_24x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_hoverblue_32x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_lightGrey_16x.ai" />
+    <None Include="Resources\Folder\VSO_Folder_whiteNoHalo_16x.ai" />
+    <None Include="Resources\GlyphDown\F12_GlyphDown_18x.ai" />
+    <None Include="Resources\GlyphDown\F12_GlyphDown_18x24.ai" />
+    <None Include="Resources\GlyphDown\GlyphDown_16x.ai" />
+    <None Include="Resources\GlyphDown\GlyphDown_71GrayNoHaloSmall_16x.ai" />
+    <None Include="Resources\GlyphDown\GlyphDown_71GrayNoHalo_16x.ai" />
+    <None Include="Resources\GlyphDown\GlyphDown_linkBlueNoHalo_16x.ai" />
+    <None Include="Resources\GlyphDown\VSO_GlyphDown_16x.ai" />
+    <None Include="Resources\GlyphDown\VSO_GlyphDown_color_16x.ai" />
+    <None Include="Resources\GlyphLeft\F12_GlyphLeft_10x18.ai" />
+    <None Include="Resources\GlyphLeft\F12_GlyphLeft_10x18_hover.ai" />
+    <None Include="Resources\GlyphLeft\F12_GlyphLeft_10x44.ai" />
+    <None Include="Resources\GlyphLeft\F12_GlyphLeft_16x.ai" />
+    <None Include="Resources\GlyphLeft\F12_GlyphLeft_32x.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_12x11.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_15x14.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_16x.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_16xLG.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_18x17.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_24x22.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_256x.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_32x.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_48x.ai" />
+    <None Include="Resources\GlyphLeft\GlyphLeft_64x.ai" />
+    <None Include="Resources\GlyphLeft\previous1_F12.ai" />
+    <None Include="Resources\GlyphLeft\previous2_F12.ai" />
+    <None Include="Resources\GlyphLeft\VSO_GlyphLeft_16x.ai" />
+    <None Include="Resources\GlyphRight\f12_breadcrumb_scroll_right_hover.ai" />
+    <None Include="Resources\GlyphRight\F12_GlyphRight_10x18.ai" />
+    <None Include="Resources\GlyphRight\F12_GlyphRight_10x44.ai" />
+    <None Include="Resources\GlyphRight\F12_GlyphRight_16x.ai" />
+    <None Include="Resources\GlyphRight\F12_GlyphRight_32x.ai" />
+    <None Include="Resources\GlyphRight\F12_GlyphRight_outline_14x.ai" />
+    <None Include="Resources\GlyphRight\F12_GlyphRight_outline_22x.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_12x11.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_15x14.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_16x.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_16xLG.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_18x17.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_1ENoHalo_16x.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_24x22.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_256x.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_32x.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_48x.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_64x.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_outlineWhiteNoHalo_16x.ai" />
+    <None Include="Resources\GlyphRight\GlyphRight_outline_16x.ai" />
+    <None Include="Resources\GlyphRight\next1_F12.ai" />
+    <None Include="Resources\GlyphRight\next2_F12.ai" />
+    <None Include="Resources\GlyphRight\VSO_GlyphRight_16x.ai" />
+    <None Include="Resources\GlyphRight\VSO_GlyphRight_outline_16x.ai" />
+    <None Include="Resources\GlyphUp\F12_GlyphUp_18x.ai" />
+    <None Include="Resources\GlyphUp\F12_GlyphUp_18x24.ai" />
+    <None Include="Resources\GlyphUp\GlyphUp_16x.ai" />
+    <None Include="Resources\GlyphUp\VSO_GlyphUp_16x.ai" />
+    <None Include="Resources\Image\asset_image-control_on_12X12.ai" />
+    <None Include="Resources\Image\asset_image-control_on_24X24.ai" />
+    <None Include="Resources\Image\Image_12x.ai" />
+    <None Include="Resources\Image\Image_16x.ai" />
+    <None Include="Resources\Image\Image_16xMD.ai" />
+    <None Include="Resources\Image\Image_16xSM.ai" />
+    <None Include="Resources\Image\Image_18x16.ai" />
+    <None Include="Resources\Image\Image_24x.ai" />
+    <None Include="Resources\Image\Image_256x.ai" />
+    <None Include="Resources\Image\Image_26x26.ai" />
+    <None Include="Resources\Image\Image_32x.ai" />
+    <None Include="Resources\Image\Image_32xMD.ai" />
+    <None Include="Resources\Image\Image_32xSM.ai" />
+    <None Include="Resources\Image\Image_48x.ai" />
+    <None Include="Resources\Image\Image_64x.ai" />
+    <None Include="Resources\Image\VSO_Image_16x.ai" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IconExtractor\IconExtractor.csproj">
+      <Project>{fdfd4eeb-c202-4d93-a6e9-d8984a12d014}</Project>
+      <Name>IconExtractor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenPainter.ColorPicker\OpenPainter.ColorPicker.csproj">
+      <Project>{3e33bc0f-af32-4bc8-831e-0a94d0e78e0f}</Project>
+      <Name>OpenPainter.ColorPicker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win10TileEditor.Core\Win10TileEditor.Core.csproj">
+      <Project>{8389baa7-5ade-4ca2-8bf9-af442b59b967}</Project>
+      <Name>Win10TileEditor.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Tree\Resources\Images\Text.png" />
+    <Resource Include="Tree\Resources\Images\Search.png" />
+    <Resource Include="Tree\Resources\Images\Properties.png" />
+    <Resource Include="Tree\Resources\Images\Picture.png" />
+    <Resource Include="Tree\Resources\Images\Folder.png" />
+    <Resource Include="Tree\Resources\Images\Executable.png" />
+    <Resource Include="Tree\Resources\Images\Archive.png" />
+    <Resource Include="Tree\Resources\Images\Application.ico" />
+    <Resource Include="Resources\Image\asset_image-control_on_12X12.png" />
+    <Resource Include="Resources\Image\asset_image-control_on_12X12_24.bmp" />
+    <Resource Include="Resources\Image\asset_image-control_on_24X24.png" />
+    <Resource Include="Resources\Image\asset_image-control_on_24X24_24.bmp" />
+    <Resource Include="Resources\Image\icon-editor-picture.png" />
+    <Resource Include="Resources\Image\Image.ico" />
+    <Resource Include="Resources\Image\Image_12x.png" />
+    <Resource Include="Resources\Image\Image_12x_24.bmp" />
+    <Resource Include="Resources\Image\Image_16x.png" />
+    <Content Include="Resources\Image\Image_16x.svg" />
+    <Resource Include="Resources\Image\Image_16X12.png" />
+    <Resource Include="Resources\Image\Image_16xMD.png" />
+    <Resource Include="Resources\Image\Image_16xSM.png" />
+    <Resource Include="Resources\Image\Image_16x_24.bmp" />
+    <Resource Include="Resources\Image\Image_16x_32.bmp" />
+    <Resource Include="Resources\Image\Image_16x_Green24.bmp" />
+    <Resource Include="Resources\Image\Image_18x16.png" />
+    <Resource Include="Resources\Image\Image_18x16_24.bmp" />
+    <Resource Include="Resources\Image\Image_24x.png" />
+    <Resource Include="Resources\Image\Image_24x_24.bmp" />
+    <Resource Include="Resources\Image\Image_256x.png" />
+    <Resource Include="Resources\Image\Image_26x26.png" />
+    <Resource Include="Resources\Image\Image_32x.png" />
+    <Resource Include="Resources\Image\Image_32xMD.png" />
+    <Resource Include="Resources\Image\Image_32xSM.png" />
+    <Resource Include="Resources\Image\Image_32x_24.bmp" />
+    <Resource Include="Resources\Image\Image_48x.png" />
+    <Resource Include="Resources\Image\Image_64x.png" />
+    <Resource Include="Resources\Image\VSO_Image_16x.png" />
+    <Content Include="Resources\Image\VSO_Image_16x.svg" />
+    <Resource Include="Resources\GlyphUp\GlyphUp_16x.png" />
+    <Content Include="Resources\GlyphUp\GlyphUp_16x.svg" />
+    <Resource Include="Resources\GlyphUp\VSO_GlyphUp_16x.png" />
+    <Content Include="Resources\GlyphUp\VSO_GlyphUp_16x.svg" />
+    <Resource Include="Resources\GlyphRight\GlyphRight.ico" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_12x11.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_15x14.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_16x.png" />
+    <Content Include="Resources\GlyphRight\GlyphRight_16x.svg" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_16xLG.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_18x17.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_1ENoHalo_16x.png" />
+    <Content Include="Resources\GlyphRight\GlyphRight_1ENoHalo_16x.svg" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_24x22.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_256x.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_32x.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_48x.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_64x.png" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_oddSize.ico" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_outlineWhiteNoHalo_16x.png" />
+    <Content Include="Resources\GlyphRight\GlyphRight_outlineWhiteNoHalo_16x.svg" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_outline_16x.png" />
+    <Content Include="Resources\GlyphRight\GlyphRight_outline_16x.svg" />
+    <Resource Include="Resources\GlyphRight\GlyphRight_outline_16x_24.bmp" />
+    <Resource Include="Resources\GlyphRight\VSO_GlyphRight_16x.png" />
+    <Resource Include="Resources\GlyphRight\VSO_GlyphRight_outline_16x.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft.ico" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_12x11.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_15x14.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_16x.png" />
+    <Content Include="Resources\GlyphLeft\GlyphLeft_16x.svg" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_16xLG.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_18x17.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_24x22.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_256x.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_32x.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_48x.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_64x.png" />
+    <Resource Include="Resources\GlyphLeft\GlyphLeft_oddSize.ico" />
+    <Resource Include="Resources\GlyphLeft\VSO_GlyphLeft_16x.png" />
+    <Content Include="Resources\GlyphLeft\VSO_GlyphLeft_16x.svg" />
+    <Resource Include="Resources\GlyphDown\GlyphDown_16x.png" />
+    <Content Include="Resources\GlyphDown\GlyphDown_16x.svg" />
+    <Resource Include="Resources\GlyphDown\GlyphDown_71GrayNoHaloSmall_16x.png" />
+    <Content Include="Resources\GlyphDown\GlyphDown_71GrayNoHaloSmall_16x.svg" />
+    <Resource Include="Resources\GlyphDown\GlyphDown_71GrayNoHalo_16x.png" />
+    <Content Include="Resources\GlyphDown\GlyphDown_71GrayNoHalo_16x.svg" />
+    <Resource Include="Resources\GlyphDown\GlyphDown_linkBlueNoHalo_16x.png" />
+    <Content Include="Resources\GlyphDown\GlyphDown_linkBlueNoHalo_16x.svg" />
+    <Resource Include="Resources\GlyphDown\VSO_GlyphDown_16x.png" />
+    <Content Include="Resources\GlyphDown\VSO_GlyphDown_16x.svg" />
+    <Resource Include="Resources\GlyphDown\VSO_GlyphDown_color_16x.png" />
+    <Content Include="Resources\GlyphDown\VSO_GlyphDown_color_16x.svg" />
+    <Resource Include="Resources\Document\Document.ico" />
+    <Resource Include="Resources\Document\Document_16x.png" />
+    <Content Include="Resources\Document\Document_16x.svg" />
+    <Resource Include="Resources\Document\document_16xMD.png" />
+    <Resource Include="Resources\Document\document_16xSM.png" />
+    <Resource Include="Resources\Document\Document_16x_24.bmp" />
+    <Resource Include="Resources\Document\Document_16x_32.bmp" />
+    <Resource Include="Resources\Document\Document_24x.png" />
+    <Resource Include="Resources\Document\Document_256x.png" />
+    <Resource Include="Resources\Document\Document_32x.png" />
+    <Resource Include="Resources\Document\document_32xMD.png" />
+    <Resource Include="Resources\Document\document_32xSM.png" />
+    <Resource Include="Resources\Document\Document_48x.png" />
+    <Resource Include="Resources\Document\Document_64x.png" />
+    <Resource Include="Resources\Document\icon-document.png" />
+    <Resource Include="Resources\Document\VSO_Document_16x.png" />
+    <Content Include="Resources\Document\VSO_Document_16x.svg" />
+    <Resource Include="Resources\Cancel\Cancel.ico" />
+    <Resource Include="Resources\Cancel\Cancel_12x.png" />
+    <Resource Include="Resources\Cancel\Cancel_14x.png" />
+    <Resource Include="Resources\Cancel\Cancel_16x.png" />
+    <Content Include="Resources\Cancel\Cancel_16x.svg" />
+    <Resource Include="Resources\Cancel\Cancel_16xMD.png" />
+    <Resource Include="Resources\Cancel\Cancel_16xSM.png" />
+    <Resource Include="Resources\Cancel\Cancel_16x_24.bmp" />
+    <Resource Include="Resources\Cancel\Cancel_16x_32.bmp" />
+    <Resource Include="Resources\Cancel\Cancel_24x.bmp" />
+    <Resource Include="Resources\Cancel\Cancel_24x.png" />
+    <Resource Include="Resources\Cancel\Cancel_256x.png" />
+    <Resource Include="Resources\Cancel\Cancel_32x.png" />
+    <Resource Include="Resources\Cancel\Cancel_48x.png" />
+    <Resource Include="Resources\Cancel\Cancel_64x.png" />
+    <Resource Include="Resources\Cancel\Cancel_7x16.png" />
+    <Resource Include="Resources\Cancel\Cancel_7x_16x.png" />
+    <Resource Include="Resources\Cancel\Cancel_7x_16x_24.bmp" />
+    <Resource Include="Resources\Cancel\Cancel_7x_16x_32.bmp" />
+    <Resource Include="Resources\Cancel\Cancel_8x.png" />
+    <Resource Include="Resources\Cancel\Cancel_disable_32x.png" />
+    <Resource Include="Resources\Cancel\Cancel_grey_16x.png" />
+    <Resource Include="Resources\Cancel\Cancel_grey_16xMD.png" />
+    <Resource Include="Resources\Cancel\Cancel_grey_16x_24.bmp" />
+    <Resource Include="Resources\Cancel\F12_Cancel_24x72.png" />
+    <Resource Include="Resources\Cancel\F12_Cancel_36x108.png" />
+    <Resource Include="Resources\Cancel\F12_Cancel_36x96.png" />
+    <Resource Include="Resources\Cancel\icon-delete-small.png" />
+    <Resource Include="Resources\Cancel\icon-delete.png" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_10x_16x.PNG" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_12x.png" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_12x_16x.PNG" />
+    <Content Include="Resources\Cancel\VSO_Cancel_12x_16x.svg" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_16x.png" />
+    <Content Include="Resources\Cancel\VSO_Cancel_16x.svg" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_16x_24x.png" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_disabled_16x.png" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_grey_12x_16x.png" />
+    <Content Include="Resources\Cancel\VSO_Cancel_grey_12x_16x.svg" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_noHalo_12x.png" />
+    <Resource Include="Resources\Cancel\VSO_Cancel_noHalo_16x.png" />
+    <Resource Include="Resources\FileWarning\FileWarning_16x.png" />
+    <Resource Include="Resources\FileWarning\FileWarning_16x_24.bmp" />
+    <Resource Include="Resources\FileWarning\FileWarning_16x_32.bmp" />
+    <Resource Include="Resources\FileWarning\FileWarning_24.ico" />
+    <Resource Include="Resources\FileWarning\FileWarning_256x.png" />
+    <Resource Include="Resources\FileWarning\FileWarning_32x.png" />
+    <Resource Include="Resources\FileWarning\FileWarning_48x.png" />
+    <Resource Include="Resources\FileWarning\FileWarning_64x.png" />
+    <Resource Include="Resources\FolderOpenWarning\FolderOpenWarning_16x.png" />
+    <Resource Include="Resources\FolderOpen\Folder open_32xMD_exp.png" />
+    <Resource Include="Resources\FolderOpen\Folder open_32xMD_exp_24.bmp" />
+    <Resource Include="Resources\FolderOpen\FolderOpen.ico" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_16x.png" />
+    <Content Include="Resources\FolderOpen\FolderOpen_16x.svg" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_16xMD.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_16xSM.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_16x_24.bmp" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_16x_32.bmp" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_16x_Green24.bmp" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_24x.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_256x.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_256x_24.bmp" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_32x.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_32xMD.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_32xSM.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_48x.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_48x_24.bmp" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_64x.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_64x_24.bmp" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_exp_16x.png" />
+    <Resource Include="Resources\FolderOpen\FolderOpen_exp_16x_24.bmp" />
+    <Resource Include="Resources\FolderOpen\VSO_FolderOpen_16x.png" />
+    <Content Include="Resources\FolderOpen\VSO_FolderOpen_16x.svg" />
+    <Resource Include="Resources\FolderWarning\FolderWarning_16x.png" />
+    <Resource Include="Resources\FolderWarning\FolderWarning_16x_24.bmp" />
+    <Resource Include="Resources\FolderWarning\FolderWarning_16x_32.bmp" />
+    <Resource Include="Resources\Folder\F12_Folder_28x.png" />
+    <Resource Include="Resources\Folder\Folder.ico" />
+    <Resource Include="Resources\Folder\Folder_16x.png" />
+    <Content Include="Resources\Folder\Folder_16x.svg" />
+    <Resource Include="Resources\Folder\Folder_16xMD.png" />
+    <Resource Include="Resources\Folder\Folder_16xSM.png" />
+    <Resource Include="Resources\Folder\Folder_16x_24.bmp" />
+    <Resource Include="Resources\Folder\Folder_16x_32.bmp" />
+    <Resource Include="Resources\Folder\Folder_16x_Green24.bmp" />
+    <Resource Include="Resources\Folder\Folder_21x.png" />
+    <Resource Include="Resources\Folder\Folder_24x.png" />
+    <Resource Include="Resources\Folder\Folder_256x.png" />
+    <Resource Include="Resources\Folder\Folder_25x.png" />
+    <Resource Include="Resources\Folder\Folder_32x.png" />
+    <Resource Include="Resources\Folder\Folder_32xMD.png" />
+    <Resource Include="Resources\Folder\Folder_32xMD_exp.png" />
+    <Resource Include="Resources\Folder\Folder_32xSM.png" />
+    <Resource Include="Resources\Folder\Folder_48x.png" />
+    <Resource Include="Resources\Folder\Folder_64x.png" />
+    <Resource Include="Resources\Folder\Folder_grey_12x.png" />
+    <Resource Include="Resources\Folder\Folder_grey_12x_24.bmp" />
+    <Resource Include="Resources\Folder\Folder_grey_16x.png" />
+    <Resource Include="Resources\Folder\Folder_grey_16x_24.bmp" />
+    <Resource Include="Resources\Folder\VSO_Folder_16x.png" />
+    <Content Include="Resources\Folder\VSO_Folder_16x.svg" />
+    <Resource Include="Resources\Folder\VSO_Folder_Grey_16x.png" />
+    <Content Include="Resources\Folder\VSO_Folder_Grey_16x.svg" />
+    <Resource Include="Resources\Folder\VSO_Folder_Grey_20x.png" />
+    <Resource Include="Resources\Folder\VSO_Folder_Grey_24x.png" />
+    <Resource Include="Resources\Folder\VSO_Folder_grey_32x.png" />
+    <Resource Include="Resources\Folder\VSO_Folder_hoverblue_16x.png" />
+    <Content Include="Resources\Folder\VSO_Folder_hoverblue_16x.svg" />
+    <Resource Include="Resources\Folder\VSO_Folder_hoverblue_20x.png" />
+    <Resource Include="Resources\Folder\VSO_Folder_hoverblue_24x.png" />
+    <Resource Include="Resources\Folder\VSO_Folder_hoverblue_32x.png" />
+    <Resource Include="Resources\Folder\VSO_Folder_lightGrey_16x.png" />
+    <Content Include="Resources\Folder\VSO_Folder_lightGrey_16x.svg" />
+    <Resource Include="Resources\Folder\VSO_Folder_whiteNoHalo_16x.png" />
+    <Content Include="Resources\Folder\VSO_Folder_whiteNoHalo_16x.svg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

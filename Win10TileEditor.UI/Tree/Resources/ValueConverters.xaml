@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Win10TileEditor.Tree.ViewModels"
+                    xmlns:i="clr-namespace:Win10TileEditor.Tree.Interaction"
+                    xmlns:vc="clr-namespace:Win10TileEditor.Tree.ValueConverters"
+                    xmlns:local="clr-namespace:Win10TileEditor.Dialog">
+
+    <vc:BooleanToVisiblityConverter x:Key="boolToVisibility"/>
+    <vc:TreeNodeToImageConverter x:Key="treeNode"/>
+    <vc:ColorConverter x:Key="colorConverter"/>
+    <local:IconToIamgeConverter x:Key="IconToIamge"/>
+
+</ResourceDictionary>
