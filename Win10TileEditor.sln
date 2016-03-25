@@ -3,7 +3,43 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenPainter.ColorPicker", "OpenPainter.ColorPicker\OpenPainter.ColorPicker.csproj", "{3E33BC0F-AF32-4BC8-831E-0A94D0E78E0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win10TileEditor.UI", "Win10TileEditor.UI\Win10TileEditor.UI.csproj", "{36E4CE49-E87F-49ED-B787-A049564C9C03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win10TileEditor.Forms", "Win10TileEditor.Forms.Old\Win10TileEditor.Forms.csproj", "{BA6CE9C2-5A40-4297-8C86-3E4470CC0A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win10TileEditor.Core", "Win10TileEditor.Core\Win10TileEditor.Core.csproj", "{8389BAA7-5ADE-4CA2-8BF9-AF442B59B967}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconExtractor", "IconExtractor\IconExtractor.csproj", "{FDFD4EEB-C202-4D93-A6E9-D8984A12D014}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E33BC0F-AF32-4BC8-831E-0A94D0E78E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E33BC0F-AF32-4BC8-831E-0A94D0E78E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E33BC0F-AF32-4BC8-831E-0A94D0E78E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E33BC0F-AF32-4BC8-831E-0A94D0E78E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36E4CE49-E87F-49ED-B787-A049564C9C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36E4CE49-E87F-49ED-B787-A049564C9C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36E4CE49-E87F-49ED-B787-A049564C9C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36E4CE49-E87F-49ED-B787-A049564C9C03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6CE9C2-5A40-4297-8C86-3E4470CC0A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6CE9C2-5A40-4297-8C86-3E4470CC0A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6CE9C2-5A40-4297-8C86-3E4470CC0A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6CE9C2-5A40-4297-8C86-3E4470CC0A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8389BAA7-5ADE-4CA2-8BF9-AF442B59B967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8389BAA7-5ADE-4CA2-8BF9-AF442B59B967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8389BAA7-5ADE-4CA2-8BF9-AF442B59B967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8389BAA7-5ADE-4CA2-8BF9-AF442B59B967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDFD4EEB-C202-4D93-A6E9-D8984A12D014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDFD4EEB-C202-4D93-A6E9-D8984A12D014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDFD4EEB-C202-4D93-A6E9-D8984A12D014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDFD4EEB-C202-4D93-A6E9-D8984A12D014}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

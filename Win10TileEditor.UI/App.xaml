@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:Win10TileEditor"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Tree/Resources/ValueConverters.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Tree/Resources/Styles/TreeView.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Tree/Resources/Styles/SearchBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Tree/Resources/SearchTreeTemplate.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/TreeResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
