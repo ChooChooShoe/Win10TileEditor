@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Controls;
 using Win10TileEditor.Core;
@@ -13,7 +14,7 @@ namespace Win10TileEditor.Tree
     /// <summary>
     /// Interaction logic for LinkTreeControl.xaml
     /// </summary>
-    public partial class LinkTreeControl : UserControl,IDisposable
+    public partial class LinkTreeControl : UserControl
     {
         public BackgroundWorker Worker { get { return worker; } }
         private BackgroundWorker worker;
@@ -42,13 +43,16 @@ namespace Win10TileEditor.Tree
         
         public void StartWorker()
         {
-            worker.RunWorkerAsync(((SearchViewModel)this.Resources["SearchViewModel"]).Roots);
+            worker.RunWorkerAsync(this.Resources["SearchViewModel"]);
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //SearchViewModel m = this.Resources["SearchViewModel"] as SearchViewModel;
-           // foreach (SearchTreeItem x in e.Result as ICollection<SearchTreeItem>)
+
+            //m.Roots = new ObservableCollection<SearchTreeItem>(m.Roots.OrderBy(a => a.Name));
+            
+            // foreach (SearchTreeItem x in e.Result as ICollection<SearchTreeItem>)
             //    m.Roots.Add(x);
         }
 
@@ -58,12 +62,26 @@ namespace Win10TileEditor.Tree
             {
                 case 98:
                     dynamic[] data = e.UserState as object[];
-                    data[0].Add(data[1]);
+                    AddSorted(data[0], data[1]);
                     break;
                 case 99:
                     break;
             }
         }
+
+        public  void AddSorted<ListViewItem>(IList<ListViewItem> list, ListViewItem item, IComparer<ListViewItem> comparer = null)
+        {
+            if (comparer == null)
+                comparer = Comparer<ListViewItem>.Default;
+
+            int i = 0;
+
+            while (i < list.Count && comparer.Compare(list[i], item) < 0)
+                i++;
+
+            list.Insert(i, item);
+        }
+
         /// <summary>
         /// Builds file and folder structure for the Browser control.
         /// </summary>
@@ -72,126 +90,142 @@ namespace Win10TileEditor.Tree
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            Stack<SearchTreeItem> stack = new Stack<SearchTreeItem>();
-            //SearchViewModel model = e.Argument as SearchViewModel;
+            SearchViewModel model = e.Argument as SearchViewModel;
 
-            Collection<SearchTreeItem> root = e.Argument as Collection<SearchTreeItem>;//new Collection<SearchTreeItem>();// 
+            var dirQueue = new Queue<FolderItem>();
+            var linkQueue = new Queue<LinkItem>();
+            var childCache = new Dictionary<string, FolderItem>();
 
-            stack.Push(new FolderItem(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms)), null));
-            stack.Push(new FolderItem(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Programs)), null));
+            dirQueue.Enqueue(new FolderItem(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms)), null, "ROOT"));
+            dirQueue.Enqueue(new FolderItem(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Programs)), null, "ROOT"));
 
-            int done = 0, todo = 2;
-            dynamic shell = ShellHelper.createWshShell();
+            double done = 0, todo = 2;
             //IconFlags flags = IconFlags.SmallIcon | IconFlags.Icon;
+
+            // Worker part 1 - folders and file structure
+            while (dirQueue.Count > 0)
+            {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                //System.Threading.Thread.Sleep(10);
+                FolderItem folder = dirQueue.Dequeue();
+
+                if (done < 10)
+                    Console.WriteLine(string.Format("i={0} - {1} - {2}",done,folder.Name,folder.FullName));
+
+                done++;
+                worker.ReportProgress(97, new object[] { done / todo * 100.0, "\\" + folder.Name });
+                
+                ICollection<SearchTreeItem> folderChildren;
+                if (folder.Parent == null)//is root
+                    folderChildren = model.Roots;
+                else
+                    folderChildren = folder.Children;
+
+                foreach(var rootDir in folder.Directories)
+                {
+
+                    todo += rootDir.GetFileSystemInfos().Length;
+
+                    foreach (var subDir in rootDir.GetDirectories())
+                    {
+                        FolderItem child;
+                        var key = folder.TreePath + "\\" + subDir.Name;
+
+                        if (childCache.ContainsKey(key))
+                        {
+                            child = childCache[key];
+                            child.Directories.Add(subDir);
+                        }
+                        else
+                        {
+                            child = new FolderItem(subDir, folder, key);
+                            childCache[key] = child;
+                            worker.ReportProgress(98, new object[] { folderChildren, child });
+                            dirQueue.Enqueue(child);
+                        }
+
+                        //folderChildren.Add(child);
+                        //ObservableCollection<SearchTreeItem> childItems = new ObservableCollection<SearchTreeItem>();
+
+                        //buildFiles(childItems, childItem.Directory, childItem);
+
+                        //childItem.children = childItems;//.OrderBy(c => c.Name).ToArray();
+                    }
+                    foreach (var file in rootDir.GetFiles("*.lnk"))
+                    {
+                        var child = new LinkItem(file, folder);
+                        worker.ReportProgress(98, new object[] { folderChildren, child });
+                        //folderChildren.Add(child);
+                        linkQueue.Enqueue(child);
+                    }
+                    foreach (var file in rootDir.GetFiles("*.url"))
+                    {
+                        var child = new UrlLinkItem(file, folder);
+                        worker.ReportProgress(98, new object[] { folderChildren, child });
+                        //folderChildren.Add(child);
+                        linkQueue.Enqueue(child);
+                    }
+                }
+            }
+            // Worker part 2 - read links and WshShortcut data
+            dynamic shell = ShellHelper.createWshShell();
             try
             {
-                while (stack.Count > 0)
+                done = 0;
+                todo = linkQueue.Count;
+                while (linkQueue.Count > 0)
                 {
                     if (worker.CancellationPending == true)
                     {
                         e.Cancel = true;
                         return;
                     }
-                    SearchTreeItem value = stack.Pop();
+                    LinkItem item = linkQueue.Dequeue();
                     done++;
-                    worker.ReportProgress(97, new object[] { (double)done / (double)todo * 100.0, value.Name });
-
-                    if (value is FolderItem)
+                    worker.ReportProgress(97, new object[] { done / todo * 100.0, "Link: "+ item.Name, item.FullName });
+                    
+                    if (item.ShortcutData == null)
                     {
-                        FolderItem folder = value as FolderItem;
-                        Item child;
-                        ICollection<SearchTreeItem> folderChildren;
-                        if (folder.Parent == null)//is root
-                            folderChildren = root;
-                        else
-                            folderChildren = folder.Children;
-
-                        foreach (var dir in folder.Directory.GetDirectories())
+                        dynamic lnk = shell.CreateShortcut(item.Info.FullName);
+                        try
                         {
-                            child = new FolderItem(dir, folder);
-                            worker.ReportProgress(98, new object[] { folderChildren, child });
-                            //folderChildren.Add(child);
-                            stack.Push(child);
-                            todo++;
-                            //ObservableCollection<SearchTreeItem> childItems = new ObservableCollection<SearchTreeItem>();
+                            item.ShortcutData = new ShellShortcut(item.Info.FullName, lnk);
 
-                            //buildFiles(childItems, childItem.Directory, childItem);
-
-                            //childItem.children = childItems;//.OrderBy(c => c.Name).ToArray();
-                        }
-                        foreach (var file in folder.Directory.GetFiles("*.lnk"))
-                        {
-                            child = new LinkItem(file, folder);
-                            worker.ReportProgress(98, new object[] { folderChildren, child });
-                            //folderChildren.Add(child);
-                            stack.Push(child);
-                            todo++;
-                        }
-                        foreach (var file in folder.Directory.GetFiles("*.url"))
-                        {
-                            child = new UrlLinkItem(file, folder);
-                            worker.ReportProgress(98, new object[] { folderChildren, child });
-                            //folderChildren.Add(child);
-                            stack.Push(child);
-                            todo++;
-                        }
-
-                    }
-                    else if (value is LinkItem)
-                    {
-                        LinkItem link = value as LinkItem;
-                        if (link.ShortcutData == null)
-                        {
-
-                            dynamic lnk = shell.CreateShortcut(link.Info.FullName);
-                            try
+                            if (!String.IsNullOrEmpty(item.ShortcutData.TargetPath) && !(item is UrlLinkItem))
                             {
-                                ShellShortcut s = new ShellShortcut();
-                                s.IconLocation = lnk.IconLocation;
-                                s.Description = lnk.Description;
-                                s.TargetPath = lnk.TargetPath;
-                                s.LinkPath = link.Info.FullName;
-                                link.ShortcutData = s;
 
-                                if (!String.IsNullOrEmpty(s.TargetPath))
-                                {
+                                //SHFILEINFO fileInfo = new SHFILEINFO();
+                                //IntPtr result = NativeMethods.SHGetFileInfo(s.TargetPath, 0, ref fileInfo, (uint)Marshal.SizeOf(fileInfo), (SHGetFileInfoFlags)flags);
 
-                                    //SHFILEINFO fileInfo = new SHFILEINFO();
-                                    //IntPtr result = NativeMethods.SHGetFileInfo(s.TargetPath, 0, ref fileInfo, (uint)Marshal.SizeOf(fileInfo), (SHGetFileInfoFlags)flags);
+                                //if (fileInfo.hIcon != IntPtr.Zero)
+                                //{
+                                //   link.Icon = new ResourceName(fileInfo.hIcon);
+                                //}
 
-                                    //if (fileInfo.hIcon != IntPtr.Zero)
-                                    //{
-                                     //   link.Icon = new ResourceName(fileInfo.hIcon);
-                                    //}
-                                    
-                                    link.ManifestData = new FileVisualManifest();
-                                    link.ManifestData.loadTargetPath(s.TargetPath);
-                                }
+                                item.ManifestData = new FileVisualManifest();
+                                item.ManifestData.loadTargetPath(item.ShortcutData.TargetPath);
                             }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine("And error has occured: {0}", ex);
-                            }
-                            finally
-                            {
-                                Marshal.FinalReleaseComObject(lnk);
-                            }
-                            //_worker.ReportProgress(0, item);
                         }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("And error has occured when reading link data for '{0}': {1}", item.Info.FullName, ex);
+                        }
+                        finally
+                        {
+                            Marshal.FinalReleaseComObject(lnk);
+                        }
+                        //_worker.ReportProgress(0, item);
                     }
                 }
-
             }
             finally
             {
                 Marshal.FinalReleaseComObject(shell);
             }
-            e.Result = root;
-        }
-
-        public void Dispose()
-        {
-            ((IDisposable)Worker).Dispose();
         }
     }
 }

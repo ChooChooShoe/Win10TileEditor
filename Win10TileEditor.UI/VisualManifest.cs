@@ -20,6 +20,14 @@ namespace Win10TileEditor
 
     public class ShellShortcut : IShortcut
     {
+        public ShellShortcut(string linkPath, dynamic lnk)
+        {
+            this.LinkPath = linkPath;
+            //this.IconLocation = lnk.IconLocation;
+            //this.Description = lnk.Description;
+            this.TargetPath = lnk.TargetPath;
+        }
+
         public string Description { get; set; }
 
         public string DisplayName
@@ -82,8 +90,12 @@ namespace Win10TileEditor
         {
             get
             {
-                FileInfo i = new FileInfo(LinkPath);
-                return i.Name.Substring(0, i.Name.Length - i.Extension.Length);
+                if (!String.IsNullOrEmpty(LinkPath))
+                {
+                    FileInfo i = new FileInfo(LinkPath);
+                    return i.Name.Substring(0, i.Name.Length - i.Extension.Length);
+                }
+                return String.Empty;
             }
         }
 
@@ -106,6 +118,14 @@ namespace Win10TileEditor
             this.IconLocation = other.IconLocation;
             this.TargetPath = other.TargetPath;
             this.LinkPath = other.LinkPath;
+        }
+
+        internal void Clear()
+        {
+            this.Description = "";
+            this.IconLocation = "";
+            this.TargetPath = "";
+            this.LinkPath = "";
         }
     }
 
@@ -285,13 +305,29 @@ namespace Win10TileEditor
         }
         public void loadFromManifest(IVisualManifest m)
         {
-            this.Source = m;
-            this.BackgroundColor = m.BackgroundColor;
-            this.ShowNameOnSquare = m.ShowNameOnSquare;
-            this.Square150x150Logo = m.Square150x150Logo;
-            this.Square70x70Logo = m.Square70x70Logo;
-            this.UseDarkText = m.UseDarkText;
+            if (m == null)
+                Clear();
+            else
+            {
+                this.Source = m;
+                this.BackgroundColor = m.BackgroundColor;
+                this.ShowNameOnSquare = m.ShowNameOnSquare;
+                this.Square150x150Logo = m.Square150x150Logo;
+                this.Square70x70Logo = m.Square70x70Logo;
+                this.UseDarkText = m.UseDarkText;
+            }
         }
+
+        internal void Clear()
+        {
+            this.Source = null;
+            this.BackgroundColor = null;
+            this.ShowNameOnSquare = false;
+            this.Square150x150Logo = "";
+            this.Square70x70Logo = "";
+            this.UseDarkText = false;
+        }
+
         /// <summary>
         /// Saves this manifest to the disk creating a new file if one does not exist.
         /// </summary>

@@ -6,7 +6,7 @@ using System.IO;
 namespace Win10TileEditor.Tree.ViewModels
 {
 
-    public abstract class SearchTreeItem : BindableBase
+    public abstract class SearchTreeItem : BindableBase,IComparable
     {
         private bool expanded;
         private bool match;
@@ -88,8 +88,15 @@ namespace Win10TileEditor.Tree.ViewModels
             //ancestors.Pop();
         }
 
+        public int CompareTo(object obj)
+        {
+            return Name.CompareTo((obj as SearchTreeItem).Name);
+        }
+
         public abstract ICollection<SearchTreeItem> Children { get; }
-        
+
+        public string TreePath { get; set; }
+
     }
 
     public abstract class Item : SearchTreeItem
@@ -124,15 +131,20 @@ namespace Win10TileEditor.Tree.ViewModels
 
         public override ICollection<SearchTreeItem> Children { get { return children; } }
 
+        [Obsolete]
         public DirectoryInfo Directory { get { return Info as DirectoryInfo; } set { Info = value; } }
+        
+        public List<DirectoryInfo> Directories { get; set; }
 
-        public FolderItem(DirectoryInfo directory, Item parent)
+        public FolderItem(DirectoryInfo directory, Item parent, string path)
         {
             Info = directory;
+            Directories = new List<DirectoryInfo>();
+            Directories.Add(directory);
             Parent = parent;
             IsMatch = true;
             IsLeaf = true;
-
+            TreePath = path;
         }
     }
 
@@ -163,6 +175,10 @@ namespace Win10TileEditor.Tree.ViewModels
             Parent = parent;
             IsMatch = true;
             IsLeaf = true;
+            if (parent == null)
+                TreePath = file.Name;
+            else
+                TreePath = parent.TreePath + "\\" + file.Name;
         }
     }
     public class UrlLinkItem : LinkItem

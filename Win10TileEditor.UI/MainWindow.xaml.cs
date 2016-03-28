@@ -153,8 +153,9 @@ namespace Win10TileEditor
                 case 97:
                     dynamic[] data = e.UserState as object[];
                     this.statusProgress.Value = data[0];
-                    Console.WriteLine(this.statusProgress.Value);
-                    this.statusPath.Text = data[1];
+                    this.statusText.Text = data[1];
+                    if (data.Length > 2)
+                        this.statusPath.Text = data[2];
                     break;
             }
         }
@@ -163,7 +164,13 @@ namespace Win10TileEditor
         {
             LinkItem item = newItem as LinkItem;
             if (item == null)
+            {
+                this.VisManifest.Clear();
+                this.image150.Source = null;
+                this.image70.Source = null;
+                this.ShortcutData.Clear();
                 return;
+            }
             if(item.ManifestData != null)
             {
                 this.VisManifest.loadFromManifest(item.ManifestData);

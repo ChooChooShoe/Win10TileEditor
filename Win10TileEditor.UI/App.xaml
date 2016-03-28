@@ -9,7 +9,6 @@
                 <ResourceDictionary Source="pack://application:,,,/Tree/Resources/ValueConverters.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Tree/Resources/Styles/TreeView.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Tree/Resources/Styles/SearchBox.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Tree/Resources/SearchTreeTemplate.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/TreeResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

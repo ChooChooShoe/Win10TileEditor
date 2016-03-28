@@ -385,6 +385,44 @@ namespace OpenPainter.ColorPicker
 
     #endregion
 
+    #region RGB Color Struct
+
+    public struct RGB
+    {
+        private double r, g, b;
+
+        /// <summary>
+        /// For RGB colors
+        /// </summary>
+        public RGB(double r, double g, double b)
+        {
+            this.r = r;
+            this.g = g;
+            this.b = b;
+        }
+
+        public double R
+        {
+            get { return r; }
+            set { r = value.LimitInRange(0, 255); }
+        }
+
+        public double G
+        {
+            get { return g; }
+            set { g = value.LimitInRange(0, 255); }
+        }
+
+        public double B
+        {
+            get { return b; }
+            set { b = value.LimitInRange(0, 255); }
+        }
+        
+    }
+
+    #endregion
+
     public enum ColorComponent { Hue, Saturation, Brightness, Red, Green, Blue, HSB, RGB }
 
     public static class MathExtensions
@@ -401,15 +439,9 @@ namespace OpenPainter.ColorPicker
         public static double LimitInRange(this double value, double min, double max)
         {
             if (value < min)
-            {
-                Console.WriteLine("LimitInRange: Min {0} from value {1} ", min, value);
                 return min;
-            }
             else if (value > max)
-            {
-                Console.WriteLine("LimitInRange: Max {0} from value {1} ", max, value);
                 return max;
-            }
             else
                 return value;
         }
